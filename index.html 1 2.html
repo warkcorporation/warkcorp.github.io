@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.2.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;WarkCorp — Teknoloji ve İnovasyon&lt;/title&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;style&gt;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #070B14;
+      --surface: #0D1528;
+      --surface2: #0a1120;
+      --border: #1a2744;
+      --accent: #2563EB;
+      --cyan: #00C2FF;
+      --amber: #F59E0B;
+      --green: #10B981;
+      --text: #E8EAED;
+      --muted: #6B7890;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(24px);
+      background: rgba(7,11,20,0.6);
+      border-bottom: 1px solid rgba(26,39,68,0.4);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--white);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color 0.2s; letter-spacing: 0.2px;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 13px; font-weight: 600; color: var(--accent);
+      text-decoration: none; border: 1px solid rgba(37,99,235,0.5);
+      padding: 8px 22px; border-radius: 8px; transition: all 0.25s;
+    }
+    .nav-cta:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 40%, #0E1E3F 0%, #070B14 70%);
+    }
+    /* Star field */
+    .stars-layer {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .star {
+      position: absolute; border-radius: 50%; background: white;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s) alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: var(--min, 0.2); }
+      to { opacity: var(--max, 0.8); }
+    }
+    /* Grid horizon line */
+    .horizon {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 300px;
+      background: linear-gradient(to top, rgba(37,99,235,0.04) 0%, transparent 100%);
+    }
+    .horizon::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 5%, rgba(37,99,235,0.25) 30%, rgba(37,99,235,0.25) 70%, transparent 95%);
+    }
+    /* Flying glider */
+    .glider-fly {
+      position: absolute; pointer-events: none; z-index: 1;
+      top: 22%; left: -250px;
+      animation: glideFly 14s ease-in-out infinite;
+    }
+    @keyframes glideFly {
+      0%   { transform: translateX(0px) translateY(0px) rotate(-2deg); opacity: 0; }
+      8%   { opacity: 0.55; }
+      40%  { transform: translateX(50vw) translateY(-40px) rotate(1deg); opacity: 0.4; }
+      60%  { transform: translateX(70vw) translateY(-30px) rotate(2deg); opacity: 0.35; }
+      92%  { opacity: 0.15; }
+      100% { transform: translateX(calc(100vw + 300px)) translateY(15px) rotate(5deg); opacity: 0; }
+    }
+    /* Hero content */
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 4px;
+      color: var(--cyan); text-transform: uppercase; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.9s ease forwards 0.3s;
+    }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(72px, 12vw, 130px);
+      font-weight: 700; line-height: 0.88; letter-spacing: -4px; color: var(--white);
+      opacity: 0; animation: fadeUp 0.9s ease forwards 0.5s;
+    }
+    .hero-title .c-acc { color: var(--accent); }
+    .hero-sub {
+      margin-top: 28px; font-size: 16px; color: var(--muted);
+      font-weight: 300; max-width: 460px; line-height: 1.65;
+      opacity: 0; animation: fadeUp 0.9s ease forwards 0.7s;
+    }
+    .hero-btns {
+      margin-top: 44px; display: flex; gap: 14px; justify-content: center;
+      opacity: 0; animation: fadeUp 0.9s ease forwards 0.9s;
+    }
+    /* Countdown strip */
+    .hero-countdown {
+      margin-top: 60px; display: flex; gap: 2px; justify-content: center; align-items: center;
+      opacity: 0; animation: fadeUp 0.9s ease forwards 1.1s;
+    }
+    .countdown-item {
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 10px; padding: 14px 20px; min-width: 80px;
+    }
+    .countdown-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px; font-weight: 700; color: var(--amber); line-height: 1;
+    }
+    .countdown-label { font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .countdown-sep { font-size: 28px; color: rgba(245,158,11,0.3); padding: 0 4px; line-height: 1; margin-top: -10px; }
+    .countdown-tag {
+      margin-top: 12px; font-size: 11px; color: var(--amber);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      padding: 13px 30px; background: var(--accent); color: white;
+      font-size: 14px; font-weight: 600; border: none; border-radius: 8px;
+      cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 35px rgba(37,99,235,0.4); }
+    .btn-ghost {
+      padding: 13px 30px; background: transparent; color: var(--text);
+      font-size: 14px; font-weight: 500; border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SHARED ── */
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+    section { padding: 110px 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+    .sec-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 10px;
+    }
+    .sec-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(34px, 5vw, 54px); font-weight: 700;
+      letter-spacing: -1.5px; line-height: 1.08; color: var(--white);
+    }
+    .sec-desc {
+      margin-top: 14px; font-size: 15px; color: var(--muted);
+      max-width: 500px; line-height: 1.7;
+    }
+
+    /* ── PROJECT X ── */
+    #project-x {
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    #project-x::before {
+      content: ''; position: absolute;
+      top: -150px; right: -150px; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(245,158,11,0.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .px-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .px-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 100px; padding: 5px 15px;
+      font-size: 11px; font-weight: 600; color: var(--amber); margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+    .px-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+      animation: pulseDot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+    .px-date {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 52px; font-weight: 700; color: var(--amber);
+      letter-spacing: -2px; line-height: 1; margin-top: 20px;
+    }
+    .px-date small {
+      font-size: 15px; color: var(--muted); display: block;
+      font-weight: 400; letter-spacing: 0; margin-top: 6px;
+    }
+    .px-visual {
+      display: flex; align-items: center; justify-content: center;
+      height: 340px; position: relative;
+    }
+    .glider-showcase { animation: floatGlider 5s ease-in-out infinite; }
+    @keyframes floatGlider {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-18px) rotate(2deg); }
+    }
+
+    /* ── VARTEX ── */
+    #vartex { background: var(--surface); }
+    .vartex-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 52px;
+    }
+    .v-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 18px; padding: 38px; position: relative;
+      overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .v-card:hover { transform: translateY(-7px); box-shadow: 0 24px 70px rgba(0,0,0,0.45); }
+    .v-card.flagship { border-color: rgba(37,99,235,0.35); }
+    .v-card.flagship::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 5%, var(--accent) 50%, transparent 95%);
+    }
+    .v-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+    .v-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px; font-weight: 700; color: var(--white);
+      letter-spacing: -1.5px; margin: 6px 0 2px;
+    }
+    .v-cores { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+    .core-grid { display: grid; gap: 5px; margin-bottom: 28px; }
+    .core-grid-12 { grid-template-columns: repeat(6, 1fr); }
+    .core-grid-8  { grid-template-columns: repeat(4, 1fr); }
+    .core-cell {
+      aspect-ratio: 1; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 5px;
+      position: relative; overflow: hidden; transition: all 0.15s;
+    }
+    .core-cell::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--accent); opacity: 0; transition: opacity 0.2s;
+    }
+    .v-card:hover .core-cell::after { opacity: 0.22; }
+    .v-card:hover .core-cell:nth-child(1)::after  { transition-delay: 0.00s; }
+    .v-card:hover .core-cell:nth-child(2)::after  { transition-delay: 0.04s; }
+    .v-card:hover .core-cell:nth-child(3)::after  { transition-delay: 0.08s; }
+    .v-card:hover .core-cell:nth-child(4)::after  { transition-delay: 0.12s; }
+    .v-card:hover .core-cell:nth-child(5)::after  { transition-delay: 0.16s; }
+    .v-card:hover .core-cell:nth-child(6)::after  { transition-delay: 0.20s; }
+    .v-card:hover .core-cell:nth-child(7)::after  { transition-delay: 0.24s; }
+    .v-card:hover .core-cell:nth-child(8)::after  { transition-delay: 0.28s; }
+    .v-card:hover .core-cell:nth-child(9)::after  { transition-delay: 0.32s; }
+    .v-card:hover .core-cell:nth-child(10)::after { transition-delay: 0.36s; }
+    .v-card:hover .core-cell:nth-child(11)::after { transition-delay: 0.40s; }
+    .v-card:hover .core-cell:nth-child(12)::after { transition-delay: 0.44s; }
+    .v-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .v-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: white; background: var(--accent);
+      border-radius: 6px; padding: 3px 9px; margin-top: 16px;
+    }
+
+    /* ── ECOSYSTEM ── */
+    #ecosystem { background: var(--bg); }
+    .eco-center {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .eco-nodes {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: center; margin-top: 52px;
+    }
+    .eco-node {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px 30px; display: flex;
+      flex-direction: column; gap: 9px; transition: all 0.3s;
+      min-width: 170px; align-items: flex-start;
+    }
+    .eco-node:hover {
+      border-color: rgba(37,99,235,0.5); transform: translateY(-5px);
+      background: rgba(37,99,235,0.04);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.12);
+    }
+    .eco-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .eco-name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); }
+    .eco-sub { font-size: 12px; color: var(--muted); }
+
+    /* ── WARK INTELLIGENCE ── */
+    #intelligence {
+      background: linear-gradient(160deg, var(--surface) 0%, #091020 50%, var(--surface) 100%);
+      position: relative; overflow: hidden;
+    }
+    #intelligence::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(37,99,235,0.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .wi-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .wi-visual {
+      position: relative; height: 380px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wi-ring {
+      position: absolute; border-radius: 50%; border: 1px solid;
+    }
+    .wi-ring:nth-child(1) { width: 100px; height: 100px; border-color: rgba(37,99,235,0.9); animation: rp 3.5s ease-in-out infinite 0.0s; }
+    .wi-ring:nth-child(2) { width: 190px; height: 190px; border-color: rgba(37,99,235,0.45); animation: rp 3.5s ease-in-out infinite 0.4s; }
+    .wi-ring:nth-child(3) { width: 290px; height: 290px; border-color: rgba(37,99,235,0.2); animation: rp 3.5s ease-in-out infinite 0.8s; }
+    .wi-ring:nth-child(4) { width: 370px; height: 370px; border-color: rgba(37,99,235,0.08); animation: rp 3.5s ease-in-out infinite 1.2s; }
+    @keyframes rp {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.06); opacity: 0.4; }
+    }
+    .wi-core {
+      width: 76px; height: 76px; background: var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px;
+      color: white; z-index: 2; position: relative;
+      box-shadow: 0 0 50px rgba(37,99,235,0.6);
+    }
+    .wi-features { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-top: 30px; }
+    .wi-feat { display: flex; gap: 14px; align-items: flex-start; }
+    .wi-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      margin-top: 7px; flex-shrink: 0;
+    }
+    .wi-feat-title { font-size: 15px; font-weight: 500; color: var(--text); }
+    .wi-feat-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+
+    /* ── COREX ── */
+    #corex { background: var(--bg); }
+    .corex-window {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; overflow: hidden; margin-top: 52px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+    }
+    .cx-titlebar {
+      background: #080f1e; padding: 13px 20px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cx-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .cx-dot-r { background: #FF5F57; }
+    .cx-dot-y { background: #FFBD2E; }
+    .cx-dot-g { background: #28CA41; }
+    .cx-bar-title { font-size: 12px; color: var(--muted); margin-left: 10px; font-family: 'Space Grotesk', sans-serif; }
+    .cx-wi-pill {
+      margin-left: auto; display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--cyan);
+      background: rgba(0,194,255,0.08); border: 1px solid rgba(0,194,255,0.25);
+      border-radius: 100px; padding: 3px 10px;
+    }
+    .cx-body { display: grid; grid-template-columns: 220px 1fr; }
+    .cx-sidebar { border-right: 1px solid var(--border); padding: 20px 0; }
+    .cx-sb-item {
+      padding: 10px 22px; font-size: 13px; color: var(--muted);
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer; transition: all 0.2s; position: relative;
+    }
+    .cx-sb-item.active {
+      color: var(--text); background: rgba(37,99,235,0.07);
+    }
+    .cx-sb-item.active::after {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--accent);
+    }
+    .cx-sb-item:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.02); }
+    .cx-main { padding: 30px; }
+    .cx-main-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700;
+      color: var(--white); margin-bottom: 22px;
+    }
+    .cx-feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cx-feat {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; transition: border-color 0.2s;
+    }
+    .cx-feat:hover { border-color: rgba(37,99,235,0.35); }
+    .cx-feat-name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+    .cx-feat-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+    .wi-pill {
+      display: inline-flex; align-items: center; gap: 4px; margin-top: 9px;
+      background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.22);
+      border-radius: 100px; padding: 2px 9px;
+      font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); }
+    .ct-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .ct-channels { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .ct-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 22px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; text-decoration: none; transition: all 0.25s;
+    }
+    .ct-item:hover { border-color: var(--accent); transform: translateX(5px); }
+    .ct-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: rgba(37,99,235,0.08); display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .ct-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 3px; }
+    .ct-val { font-size: 14px; font-weight: 500; color: var(--text); }
+    /* Form */
+    .ct-form { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg { display: flex; flex-direction: column; gap: 5px; }
+    .fg label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+    .fg input, .fg textarea, .fg select {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 11px 14px; color: var(--text); font-size: 14px;
+      font-family: 'Inter', sans-serif; transition: border-color 0.2s; width: 100%;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: var(--accent); }
+    .fg textarea { resize: none; height: 110px; }
+    .fg select { appearance: none; cursor: pointer; }
+    .form-send {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px; background: var(--accent); color: white;
+      border: none; border-radius: 10px; cursor: pointer;
+      font-size: 14px; font-weight: 600; transition: all 0.25s;
+      text-decoration: none;
+    }
+    .form-send:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,99,235,0.4); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border); padding: 36px 0;
+    }
+    .ft-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ft-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); }
+    .ft-logo span { color: var(--accent); }
+    .ft-copy { font-size: 12px; color: var(--muted); }
+    .ft-links { display: flex; gap: 22px; list-style: none; }
+    .ft-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .ft-links a:hover { color: var(--text); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .container { padding: 0 20px; }
+      section { padding: 72px 0; }
+      .px-layout, .wi-layout, .ct-layout { grid-template-columns: 1fr; gap: 40px; }
+      .vartex-grid { grid-template-columns: 1fr; }
+      .cx-body { grid-template-columns: 1fr; }
+      .cx-sidebar { display: none; }
+      .cx-feat-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(54px, 16vw, 80px); letter-spacing: -2px; }
+      .ft-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- ─── NAV ─── --&gt;
+&lt;nav id=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;nav-logo&quot;&gt;Wark&lt;span&gt;Corp&lt;/span&gt;&lt;/div&gt;
+  &lt;ul class=&quot;nav-links&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#project-x&quot;&gt;Project X&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#vartex&quot;&gt;Vartex&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#ecosystem&quot;&gt;X Ekosistemi&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#intelligence&quot;&gt;Wark Intelligence&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#corex&quot;&gt;coreX&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;a href=&quot;#contact&quot; class=&quot;nav-cta&quot;&gt;İletişim&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- ─── HERO ─── --&gt;
+&lt;section id=&quot;hero&quot;&gt;
+  &lt;div class=&quot;hero-bg&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- Stars --&gt;
+  &lt;div class=&quot;stars-layer&quot; id=&quot;starsLayer&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- Flying glider across hero --&gt;
+  &lt;div class=&quot;glider-fly&quot;&gt;
+    &lt;svg width=&quot;220&quot; height=&quot;70&quot; viewBox=&quot;0 0 220 70&quot; fill=&quot;none&quot;&gt;
+      &lt;defs&gt;
+        &lt;filter id=&quot;gf&quot;&gt;&lt;feGaussianBlur stdDeviation=&quot;2&quot; result=&quot;b&quot;/&gt;&lt;feMerge&gt;&lt;feMergeNode in=&quot;b&quot;/&gt;&lt;feMergeNode in=&quot;SourceGraphic&quot;/&gt;&lt;/feMerge&gt;&lt;/filter&gt;
+      &lt;/defs&gt;
+      &lt;!-- Body --&gt;
+      &lt;path d=&quot;M200 35 L25 30 L5 35 L25 40 Z&quot; fill=&quot;rgba(0,194,255,0.3)&quot; stroke=&quot;rgba(0,194,255,0.7)&quot; stroke-width=&quot;0.8&quot; filter=&quot;url(#gf)&quot;/&gt;
+      &lt;!-- Wings --&gt;
+      &lt;path d=&quot;M115 33 L45 8 L70 31 Z&quot; fill=&quot;rgba(0,194,255,0.18)&quot; stroke=&quot;rgba(0,194,255,0.55)&quot; stroke-width=&quot;0.8&quot;/&gt;
+      &lt;path d=&quot;M115 37 L45 62 L70 39 Z&quot; fill=&quot;rgba(0,194,255,0.18)&quot; stroke=&quot;rgba(0,194,255,0.55)&quot; stroke-width=&quot;0.8&quot;/&gt;
+      &lt;!-- Wing ribs --&gt;
+      &lt;line x1=&quot;115&quot; y1=&quot;33&quot; x2=&quot;60&quot; y2=&quot;12&quot; stroke=&quot;rgba(0,194,255,0.25)&quot; stroke-width=&quot;0.5&quot;/&gt;
+      &lt;line x1=&quot;115&quot; y1=&quot;37&quot; x2=&quot;60&quot; y2=&quot;58&quot; stroke=&quot;rgba(0,194,255,0.25)&quot; stroke-width=&quot;0.5&quot;/&gt;
+      &lt;!-- Tail --&gt;
+      &lt;path d=&quot;M25 32 L8 20 L22 31 Z&quot; fill=&quot;rgba(0,194,255,0.2)&quot; stroke=&quot;rgba(0,194,255,0.5)&quot; stroke-width=&quot;0.8&quot;/&gt;
+      &lt;path d=&quot;M25 38 L8 50 L22 39 Z&quot; fill=&quot;rgba(0,194,255,0.2)&quot; stroke=&quot;rgba(0,194,255,0.5)&quot; stroke-width=&quot;0.8&quot;/&gt;
+      &lt;!-- Canopy --&gt;
+      &lt;path d=&quot;M172 28 C185 24, 204 33, 200 35 C204 37, 185 46, 172 42 Z&quot; fill=&quot;rgba(255,255,255,0.1)&quot; stroke=&quot;rgba(0,194,255,0.9)&quot; stroke-width=&quot;0.8&quot;/&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;horizon&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;hero-content&quot;&gt;
+    &lt;p class=&quot;hero-eyebrow&quot;&gt;Teknoloji · İnovasyon · Geleceği Şekillendiriyoruz&lt;/p&gt;
+    &lt;h1 class=&quot;hero-title&quot;&gt;WARK&lt;br&gt;&lt;span class=&quot;c-acc&quot;&gt;CORP&lt;/span&gt;&lt;/h1&gt;
+    &lt;p class=&quot;hero-sub&quot;&gt;İşlemciden yapay zekaya, işletim sisteminden havacılığa.&lt;br&gt;Tek bir vizyon altında birleşen teknoloji.&lt;/p&gt;
+    &lt;div class=&quot;hero-btns&quot;&gt;
+      &lt;a href=&quot;#project-x&quot; class=&quot;btn-primary&quot;&gt;Project X'i Keşfet&lt;/a&gt;
+      &lt;a href=&quot;#vartex&quot; class=&quot;btn-ghost&quot;&gt;Ürünleri Gör&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;hero-countdown&quot;&gt;
+      &lt;div class=&quot;countdown-item&quot;&gt;
+        &lt;span class=&quot;countdown-num&quot; id=&quot;cd-days&quot;&gt;00&lt;/span&gt;
+        &lt;span class=&quot;countdown-label&quot;&gt;Gün&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;countdown-sep&quot;&gt;:&lt;/span&gt;
+      &lt;div class=&quot;countdown-item&quot;&gt;
+        &lt;span class=&quot;countdown-num&quot; id=&quot;cd-hours&quot;&gt;00&lt;/span&gt;
+        &lt;span class=&quot;countdown-label&quot;&gt;Saat&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;countdown-sep&quot;&gt;:&lt;/span&gt;
+      &lt;div class=&quot;countdown-item&quot;&gt;
+        &lt;span class=&quot;countdown-num&quot; id=&quot;cd-mins&quot;&gt;00&lt;/span&gt;
+        &lt;span class=&quot;countdown-label&quot;&gt;Dakika&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;countdown-sep&quot;&gt;:&lt;/span&gt;
+      &lt;div class=&quot;countdown-item&quot;&gt;
+        &lt;span class=&quot;countdown-num&quot; id=&quot;cd-secs&quot;&gt;00&lt;/span&gt;
+        &lt;span class=&quot;countdown-label&quot;&gt;Saniye&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;countdown-tag&quot;&gt;Project X · 26 Haziran Tanıtımına Kalan Süre&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── PROJECT X ─── --&gt;
+&lt;section id=&quot;project-x&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;px-layout&quot;&gt;
+      &lt;div class=&quot;reveal&quot;&gt;
+        &lt;div class=&quot;px-badge&quot;&gt;
+          &lt;span class=&quot;px-badge-dot&quot;&gt;&lt;/span&gt;
+          Yakında Açıklanıyor
+        &lt;/div&gt;
+        &lt;p class=&quot;sec-eyebrow&quot;&gt;Project X&lt;/p&gt;
+        &lt;h2 class=&quot;sec-title&quot;&gt;Gökyüzüne&lt;br&gt;Açılan Kapı&lt;/h2&gt;
+        &lt;p class=&quot;sec-desc&quot;&gt;WarkCorp'un havacılık alanındaki çığır açan projesi. Wark Intelligence destekli, otonom navigasyonlu planör. Yalnızca hava, yalnızca özgürlük.&lt;/p&gt;
+        &lt;div class=&quot;px-date&quot;&gt;
+          26 Haziran
+          &lt;small&gt;İlk tanıtım tarihi — Takipte Kalın&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;px-visual reveal reveal-delay-2&quot;&gt;
+        &lt;div class=&quot;glider-showcase&quot;&gt;
+          &lt;svg width=&quot;440&quot; height=&quot;300&quot; viewBox=&quot;0 0 440 300&quot; fill=&quot;none&quot;&gt;
+            &lt;defs&gt;
+              &lt;radialGradient id=&quot;gGlow&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;50%&quot;&gt;
+                &lt;stop offset=&quot;0%&quot; stop-color=&quot;rgba(245,158,11,0.12)&quot;/&gt;
+                &lt;stop offset=&quot;100%&quot; stop-color=&quot;transparent&quot;/&gt;
+              &lt;/radialGradient&gt;
+              &lt;filter id=&quot;glowF&quot;&gt;
+                &lt;feGaussianBlur stdDeviation=&quot;4&quot; result=&quot;b&quot;/&gt;
+                &lt;feMerge&gt;&lt;feMergeNode in=&quot;b&quot;/&gt;&lt;feMergeNode in=&quot;SourceGraphic&quot;/&gt;&lt;/feMerge&gt;
+              &lt;/filter&gt;
+            &lt;/defs&gt;
+            &lt;!-- Glow halo --&gt;
+            &lt;ellipse cx=&quot;220&quot; cy=&quot;150&quot; rx=&quot;190&quot; ry=&quot;140&quot; fill=&quot;url(#gGlow)&quot;/&gt;
+            &lt;!-- Fuselage --&gt;
+            &lt;path d=&quot;M370 150 L75 140 L50 150 L75 160 Z&quot; fill=&quot;rgba(245,158,11,0.22)&quot; stroke=&quot;rgba(245,158,11,0.75)&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#glowF)&quot;/&gt;
+            &lt;!-- Main wing upper --&gt;
+            &lt;path d=&quot;M210 146 L110 62 L155 144 Z&quot; fill=&quot;rgba(245,158,11,0.15)&quot; stroke=&quot;rgba(245,158,11,0.55)&quot; stroke-width=&quot;1.2&quot;/&gt;
+            &lt;!-- Main wing lower --&gt;
+            &lt;path d=&quot;M210 154 L110 238 L155 156 Z&quot; fill=&quot;rgba(245,158,11,0.15)&quot; stroke=&quot;rgba(245,158,11,0.55)&quot; stroke-width=&quot;1.2&quot;/&gt;
+            &lt;!-- Wing rib lines --&gt;
+            &lt;line x1=&quot;210&quot; y1=&quot;146&quot; x2=&quot;130&quot; y2=&quot;76&quot; stroke=&quot;rgba(245,158,11,0.28)&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;line x1=&quot;210&quot; y1=&quot;154&quot; x2=&quot;130&quot; y2=&quot;224&quot; stroke=&quot;rgba(245,158,11,0.28)&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;line x1=&quot;210&quot; y1=&quot;146&quot; x2=&quot;165&quot; y2=&quot;100&quot; stroke=&quot;rgba(245,158,11,0.18)&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;line x1=&quot;210&quot; y1=&quot;154&quot; x2=&quot;165&quot; y2=&quot;200&quot; stroke=&quot;rgba(245,158,11,0.18)&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;!-- Tail fins --&gt;
+            &lt;path d=&quot;M86 144 L58 122 L80 143 Z&quot; fill=&quot;rgba(245,158,11,0.2)&quot; stroke=&quot;rgba(245,158,11,0.55)&quot; stroke-width=&quot;1&quot;/&gt;
+            &lt;path d=&quot;M86 156 L58 178 L80 157 Z&quot; fill=&quot;rgba(245,158,11,0.2)&quot; stroke=&quot;rgba(245,158,11,0.55)&quot; stroke-width=&quot;1&quot;/&gt;
+            &lt;!-- Dorsal fin --&gt;
+            &lt;path d=&quot;M90 140 L88 118 L100 140 Z&quot; fill=&quot;rgba(245,158,11,0.15)&quot; stroke=&quot;rgba(245,158,11,0.45)&quot; stroke-width=&quot;1&quot;/&gt;
+            &lt;!-- Canopy --&gt;
+            &lt;path d=&quot;M330 138 C352 130, 376 145, 372 150 C376 155, 352 170, 330 162 Z&quot; fill=&quot;rgba(255,255,255,0.08)&quot; stroke=&quot;rgba(245,158,11,0.9)&quot; stroke-width=&quot;1.5&quot;/&gt;
+            &lt;!-- Fuselage center line --&gt;
+            &lt;line x1=&quot;90&quot; y1=&quot;148&quot; x2=&quot;340&quot; y2=&quot;149&quot; stroke=&quot;rgba(245,158,11,0.25)&quot; stroke-width=&quot;0.5&quot;/&gt;
+            &lt;!-- X marking --&gt;
+            &lt;text x=&quot;72&quot; y=&quot;156&quot; font-family=&quot;Space Grotesk&quot; font-size=&quot;13&quot; fill=&quot;rgba(245,158,11,0.9)&quot; font-weight=&quot;700&quot;&gt;X&lt;/text&gt;
+            &lt;!-- Wing tip lights (animated) --&gt;
+            &lt;circle cx=&quot;112&quot; cy=&quot;62&quot; r=&quot;3&quot; fill=&quot;rgba(245,158,11,0.9)&quot;&gt;
+              &lt;animate attributeName=&quot;opacity&quot; values=&quot;1;0.2;1&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;/&gt;
+            &lt;/circle&gt;
+            &lt;circle cx=&quot;112&quot; cy=&quot;238&quot; r=&quot;3&quot; fill=&quot;rgba(245,158,11,0.9)&quot;&gt;
+              &lt;animate attributeName=&quot;opacity&quot; values=&quot;0.2;1;0.2&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;/&gt;
+            &lt;/circle&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── VARTEX ─── --&gt;
+&lt;section id=&quot;vartex&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;reveal&quot;&gt;
+      &lt;p class=&quot;sec-eyebrow&quot;&gt;İşlemciler&lt;/p&gt;
+      &lt;h2 class=&quot;sec-title&quot;&gt;Vartex Serisi&lt;/h2&gt;
+      &lt;p class=&quot;sec-desc&quot;&gt;Yeni nesil WarkCorp işlemci mimarisi. Wark Intelligence ile donanım düzeyinde AI desteği.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;vartex-grid&quot;&gt;
+      &lt;!-- Vartex-4X --&gt;
+      &lt;div class=&quot;v-card flagship reveal reveal-delay-1&quot;&gt;
+        &lt;p class=&quot;v-label&quot;&gt;Yeni · Amiral Gemisi&lt;/p&gt;
+        &lt;h3 class=&quot;v-name&quot;&gt;Vartex-4X&lt;/h3&gt;
+        &lt;p class=&quot;v-cores&quot;&gt;12 Çekirdek&lt;/p&gt;
+        &lt;div class=&quot;core-grid core-grid-12&quot;&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;v-desc&quot;&gt;En zorlu iş yükleri için tasarlandı. Wark Intelligence entegrasyonu ve coreX 1.2 tam uyumluluğuyla maksimum performans.&lt;/p&gt;
+        &lt;span class=&quot;v-badge&quot;&gt;WI Destekli&lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Vartex-4 --&gt;
+      &lt;div class=&quot;v-card reveal reveal-delay-2&quot;&gt;
+        &lt;p class=&quot;v-label&quot;&gt;Yeni · Ana Segment&lt;/p&gt;
+        &lt;h3 class=&quot;v-name&quot;&gt;Vartex-4&lt;/h3&gt;
+        &lt;p class=&quot;v-cores&quot;&gt;8 Çekirdek&lt;/p&gt;
+        &lt;div class=&quot;core-grid core-grid-8&quot;&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;&lt;div class=&quot;core-cell&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;v-desc&quot;&gt;Günlük kullanım ve profesyonel iş akışları için ideal güç-verimlilik dengesi. Akıllı, hızlı ve güvenilir.&lt;/p&gt;
+        &lt;span class=&quot;v-badge&quot;&gt;WI Destekli&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── X ECOSYSTEM ─── --&gt;
+&lt;section id=&quot;ecosystem&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;eco-center reveal&quot;&gt;
+      &lt;p class=&quot;sec-eyebrow&quot;&gt;X Ekosistemi&lt;/p&gt;
+      &lt;h2 class=&quot;sec-title&quot;&gt;Her Şey Bağlı&lt;/h2&gt;
+      &lt;p class=&quot;sec-desc&quot;&gt;WarkCorp ürünleri birbirleriyle kusursuz entegre çalışır. Tek ekosistem, sonsuz olasılıklar.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;eco-nodes&quot;&gt;
+      &lt;div class=&quot;eco-node reveal reveal-delay-1&quot;&gt;
+        &lt;div class=&quot;eco-icon&quot; style=&quot;background:rgba(245,158,11,0.1);&quot;&gt;✈️&lt;/div&gt;
+        &lt;p class=&quot;eco-name&quot;&gt;Project X&lt;/p&gt;
+        &lt;p class=&quot;eco-sub&quot;&gt;Planör Platform&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;eco-node reveal reveal-delay-2&quot;&gt;
+        &lt;div class=&quot;eco-icon&quot; style=&quot;background:rgba(37,99,235,0.1);&quot;&gt;🔷&lt;/div&gt;
+        &lt;p class=&quot;eco-name&quot;&gt;Vartex-4X&lt;/p&gt;
+        &lt;p class=&quot;eco-sub&quot;&gt;12 Çekirdek&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;eco-node reveal reveal-delay-3&quot;&gt;
+        &lt;div class=&quot;eco-icon&quot; style=&quot;background:rgba(37,99,235,0.08);&quot;&gt;⬡&lt;/div&gt;
+        &lt;p class=&quot;eco-name&quot;&gt;Vartex-4&lt;/p&gt;
+        &lt;p class=&quot;eco-sub&quot;&gt;8 Çekirdek&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;eco-node reveal reveal-delay-4&quot;&gt;
+        &lt;div class=&quot;eco-icon&quot; style=&quot;background:rgba(0,194,255,0.1);&quot;&gt;🧠&lt;/div&gt;
+        &lt;p class=&quot;eco-name&quot;&gt;Wark Intelligence&lt;/p&gt;
+        &lt;p class=&quot;eco-sub&quot;&gt;Yapay Zeka Motoru&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;eco-node reveal reveal-delay-5&quot;&gt;
+        &lt;div class=&quot;eco-icon&quot; style=&quot;background:rgba(16,185,129,0.1);&quot;&gt;💻&lt;/div&gt;
+        &lt;p class=&quot;eco-name&quot;&gt;coreX 1.2&lt;/p&gt;
+        &lt;p class=&quot;eco-sub&quot;&gt;İşletim Sistemi&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── WARK INTELLIGENCE ─── --&gt;
+&lt;section id=&quot;intelligence&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;wi-layout&quot;&gt;
+      &lt;div class=&quot;reveal&quot;&gt;
+        &lt;p class=&quot;sec-eyebrow&quot;&gt;Wark Intelligence&lt;/p&gt;
+        &lt;h2 class=&quot;sec-title&quot;&gt;Yapay Zeka&lt;br&gt;Yeniden Tanımlandı&lt;/h2&gt;
+        &lt;p class=&quot;sec-desc&quot;&gt;WarkCorp'un yerli yapay zeka motoruyla tüm ürünler daha akıllı, daha hızlı ve daha güvenli çalışır.&lt;/p&gt;
+
+        &lt;ul class=&quot;wi-features&quot;&gt;
+          &lt;li class=&quot;wi-feat&quot;&gt;
+            &lt;div class=&quot;wi-dot&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;wi-feat-title&quot;&gt;Gerçek Zamanlı İşleme&lt;/p&gt;
+              &lt;p class=&quot;wi-feat-desc&quot;&gt;Vartex serisiyle sıfıra yakın gecikme. Donanım ve yazılım birlikte optimize edildi.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;wi-feat&quot;&gt;
+            &lt;div class=&quot;wi-dot&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;wi-feat-title&quot;&gt;coreX Derin Entegrasyon&lt;/p&gt;
+              &lt;p class=&quot;wi-feat-desc&quot;&gt;İşletim sistemi düzeyinde yapay zeka desteği. Her uygulamada WI gücü.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;wi-feat&quot;&gt;
+            &lt;div class=&quot;wi-dot&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;wi-feat-title&quot;&gt;Otonom Navigasyon&lt;/p&gt;
+              &lt;p class=&quot;wi-feat-desc&quot;&gt;Project X'in uçuş bilgisayarını yönetiyor. Güvenli, hassas, öğrenen.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;wi-feat&quot;&gt;
+            &lt;div class=&quot;wi-dot&quot;&gt;&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;wi-feat-title&quot;&gt;Gizlilik Önce&lt;/p&gt;
+              &lt;p class=&quot;wi-feat-desc&quot;&gt;Tüm AI işlemleri cihaz üzerinde gerçekleşir. Buluta gönderilmez.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;wi-visual reveal reveal-delay-2&quot;&gt;
+        &lt;div class=&quot;wi-ring&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;wi-ring&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;wi-ring&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;wi-ring&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;wi-core&quot;&gt;WI&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── COREX 1.2 ─── --&gt;
+&lt;section id=&quot;corex&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;reveal&quot;&gt;
+      &lt;p class=&quot;sec-eyebrow&quot;&gt;İşletim Sistemi&lt;/p&gt;
+      &lt;h2 class=&quot;sec-title&quot;&gt;coreX 1.2&lt;/h2&gt;
+      &lt;p class=&quot;sec-desc&quot;&gt;Wark Intelligence ile doğan işletim sistemi. X Ekosistemiyle tam entegre, akıllı ve hızlı.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;corex-window reveal&quot;&gt;
+      &lt;div class=&quot;cx-titlebar&quot;&gt;
+        &lt;div class=&quot;cx-dot cx-dot-r&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;cx-dot cx-dot-y&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;cx-dot cx-dot-g&quot;&gt;&lt;/div&gt;
+        &lt;span class=&quot;cx-bar-title&quot;&gt;coreX 1.2 — Sistem Tercihleri&lt;/span&gt;
+        &lt;span class=&quot;cx-wi-pill&quot;&gt;⚡ Wark Intelligence Aktif&lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;cx-body&quot;&gt;
+        &lt;div class=&quot;cx-sidebar&quot;&gt;
+          &lt;div class=&quot;cx-sb-item active&quot;&gt;&lt;span&gt;⚡&lt;/span&gt; Genel Bakış&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;🧠&lt;/span&gt; Wark AI&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;🔧&lt;/span&gt; Donanım&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;🔒&lt;/span&gt; Güvenlik&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;📦&lt;/span&gt; Uygulamalar&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;🌐&lt;/span&gt; Ağ&lt;/div&gt;
+          &lt;div class=&quot;cx-sb-item&quot;&gt;&lt;span&gt;🔗&lt;/span&gt; X Ekosistemi&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;cx-main&quot;&gt;
+          &lt;p class=&quot;cx-main-title&quot;&gt;coreX 1.2 — Hoş Geldiniz&lt;/p&gt;
+          &lt;div class=&quot;cx-feat-grid&quot;&gt;
+            &lt;div class=&quot;cx-feat&quot;&gt;
+              &lt;p class=&quot;cx-feat-name&quot;&gt;Yerleşik AI Asistan&lt;/p&gt;
+              &lt;p class=&quot;cx-feat-desc&quot;&gt;Sistem genelinde Wark Intelligence. Herhangi bir uygulamada anında AI gücü.&lt;/p&gt;
+              &lt;span class=&quot;wi-pill&quot;&gt;WI Destekli&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;cx-feat&quot;&gt;
+              &lt;p class=&quot;cx-feat-name&quot;&gt;Akıllı Güç Yönetimi&lt;/p&gt;
+              &lt;p class=&quot;cx-feat-desc&quot;&gt;Vartex işlemcilerle senkronize optimizasyon. Daha hızlı, daha uzun pil ömrü.&lt;/p&gt;
+              &lt;span class=&quot;wi-pill&quot;&gt;WI Destekli&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;cx-feat&quot;&gt;
+              &lt;p class=&quot;cx-feat-name&quot;&gt;X Ekosistemi Köprüsü&lt;/p&gt;
+              &lt;p class=&quot;cx-feat-desc&quot;&gt;Tüm WarkCorp cihazlarıyla anında kesintisiz bağlantı.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;cx-feat&quot;&gt;
+              &lt;p class=&quot;cx-feat-name&quot;&gt;Donanım Güvenliği&lt;/p&gt;
+              &lt;p class=&quot;cx-feat-desc&quot;&gt;Çip düzeyinde şifreleme ve cihaz bütünlüğü doğrulama katmanı.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- ─── CONTACT ─── --&gt;
+&lt;section id=&quot;contact&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;ct-layout&quot;&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;reveal&quot;&gt;
+          &lt;p class=&quot;sec-eyebrow&quot;&gt;İletişim&lt;/p&gt;
+          &lt;h2 class=&quot;sec-title&quot;&gt;Bizimle&lt;br&gt;İletişime Geçin&lt;/h2&gt;
+          &lt;p class=&quot;sec-desc&quot;&gt;Başvuru, destek veya iş birliği için her zaman buradayız.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;ct-channels reveal reveal-delay-1&quot;&gt;
+          &lt;a href=&quot;mailto:warkcorporation@gmail.com&quot; class=&quot;ct-item&quot;&gt;
+            &lt;div class=&quot;ct-icon&quot;&gt;✉️&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;ct-lbl&quot;&gt;E-Posta · Başvuru &amp; Destek&lt;/p&gt;
+              &lt;p class=&quot;ct-val&quot;&gt;warkcorporation@gmail.com&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+          &lt;a href=&quot;https://instagram.com/egekursatt&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;ct-item&quot;&gt;
+            &lt;div class=&quot;ct-icon&quot;&gt;📷&lt;/div&gt;
+            &lt;div&gt;
+              &lt;p class=&quot;ct-lbl&quot;&gt;Instagram&lt;/p&gt;
+              &lt;p class=&quot;ct-val&quot;&gt;@egekursatt&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;reveal reveal-delay-2&quot;&gt;
+        &lt;p class=&quot;sec-eyebrow&quot;&gt;Mesaj Gönder&lt;/p&gt;
+        &lt;div class=&quot;ct-form&quot;&gt;
+          &lt;div class=&quot;form-row&quot;&gt;
+            &lt;div class=&quot;fg&quot;&gt;
+              &lt;label&gt;Ad Soyad&lt;/label&gt;
+              &lt;input type=&quot;text&quot; placeholder=&quot;Adınız Soyadınız&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;fg&quot;&gt;
+              &lt;label&gt;E-Posta&lt;/label&gt;
+              &lt;input type=&quot;email&quot; placeholder=&quot;ornek@email.com&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;fg&quot;&gt;
+            &lt;label&gt;Konu&lt;/label&gt;
+            &lt;select&gt;
+              &lt;option value=&quot;&quot; disabled selected&gt;Konu seçin...&lt;/option&gt;
+              &lt;option&gt;Başvuru&lt;/option&gt;
+              &lt;option&gt;Teknik Destek&lt;/option&gt;
+              &lt;option&gt;İş Birliği&lt;/option&gt;
+              &lt;option&gt;Project X Bilgi&lt;/option&gt;
+              &lt;option&gt;Genel&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;fg&quot;&gt;
+            &lt;label&gt;Mesajınız&lt;/label&gt;
+            &lt;textarea placeholder=&quot;Mesajınızı buraya yazın...&quot;&gt;&lt;/textarea&gt;
+          &lt;/div&gt;
+          &lt;a href=&quot;mailto:warkcorporation@gmail.com&quot; class=&quot;form-send&quot;&gt;
+            Mesaj Gönder
+            &lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 18 18&quot; fill=&quot;none&quot;&gt;&lt;path d=&quot;M3 9h12M10 5l5 4-5 4&quot; stroke=&quot;white&quot; stroke-width=&quot;1.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;&lt;/svg&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ─── FOOTER ─── --&gt;
+&lt;footer&gt;
+  &lt;div class=&quot;ft-inner&quot;&gt;
+    &lt;div class=&quot;ft-logo&quot;&gt;Wark&lt;span&gt;Corp&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&quot;ft-copy&quot;&gt;© 2026 WarkCorp. Tüm hakları saklıdır.&lt;/p&gt;
+    &lt;ul class=&quot;ft-links&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#hero&quot;&gt;Ana Sayfa&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#project-x&quot;&gt;Project X&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vartex&quot;&gt;Vartex&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;İletişim&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;script&gt;
+  /* ── Star field generation ── */
+  const starsLayer = document.getElementById('starsLayer');
+  const starData = [
+    { w:1, h:1, dur:3.2, delay:0,    min:0.15, max:0.7  },
+    { w:1, h:1, dur:2.8, delay:0.5,  min:0.2,  max:0.9  },
+    { w:1, h:1, dur:4,   delay:1,    min:0.1,  max:0.6  },
+    { w:2, h:2, dur:2.5, delay:0.2,  min:0.3,  max:1.0  },
+    { w:1, h:1, dur:3.8, delay:1.5,  min:0.1,  max:0.5  },
+  ];
+  for (let i = 0; i &lt; 90; i++) {
+    const d = starData[i % starData.length];
+    const el = document.createElement('div');
+    el.className = 'star';
+    el.style.cssText = `
+      width:${d.w}px; height:${d.h}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --dur:${d.dur + Math.random()}s;
+      --delay:${(d.delay + Math.random() * 2).toFixed(2)}s;
+      --min:${d.min}; --max:${d.max};
+    `;
+    starsLayer.appendChild(el);
+  }
+
+  /* ── Countdown to June 26 ── */
+  function updateCountdown() {
+    const now = new Date();
+    const target = new Date('2026-06-26T10:00:00');
+    const diff = target - now;
+    if (diff &lt;= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    const pad = n =&gt; String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-secs').textContent  = pad(secs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver((entries) =&gt; {
+    entries.forEach(e =&gt; { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el =&gt; ro.observe(el));
+
+  /* ── Nav background on scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () =&gt; {
+    navbar.style.background = window.scrollY &gt; 60
+      ? 'rgba(7,11,20,0.96)'
+      : 'rgba(7,11,20,0.6)';
+  }, { passive: true });
+
+  /* ── coreX sidebar interaction ── */
+  document.querySelectorAll('.cx-sb-item').forEach(item =&gt; {
+    item.addEventListener('click', () =&gt; {
+      document.querySelectorAll('.cx-sb-item').forEach(i =&gt; i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
